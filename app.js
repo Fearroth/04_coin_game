@@ -13,68 +13,74 @@ function isTouching(a, b) {
 const avatar = document.querySelector('#player');
 const coin = document.querySelector('#coin');
 coin.style.left = '500px';
-
+var game = true;
 window.addEventListener('keyup', (e) => {
-	// why its empty its 100 in css??? => it should be taken from getComputedStyle()
-	if (!avatar.style.top) {
-		avatar.style.top = '100px';
-	}
-	if (!avatar.style.left) {
-		avatar.style.left = '100px';
-	}
-	console.log(e);
-	if (e.key === 'ArrowDown') {
-		let pos = parsePos(avatar.style.top);
-		console.log(pos);
-		pos += 50;
-		if (pos + parseInt(getComputedStyle(avatar).height.slice(0, -2)) > window.innerHeight) {
-			avatar.style.top = '0px';
-		} else {
-			avatar.style.top = `${pos}px`;
+	if (game) {
+		// why its empty its 100 in css??? => it should be taken from getComputedStyle()
+		if (!avatar.style.top) {
+			avatar.style.top = '100px';
 		}
-		console.log(pos);
-		//avatar.style.top = `${pos}px`;
-		console.log(avatar.style.top);
-	}
-	if (e.key === 'ArrowUp') {
-		let pos = parseInt(avatar.style.top.slice(0, -2));
-		pos -= 50;
-		if (pos < 0) {
-			avatar.style.top = `${window.innerHeight - parseInt(getComputedStyle(avatar).height.slice(0, -2))}px`;
-		} else {
-			avatar.style.top = `${pos}px`;
+		if (!avatar.style.left) {
+			avatar.style.left = '100px';
 		}
-
-		console.log(avatar.style.top);
-	}
-	if (e.key === 'ArrowLeft') {
-		let pos = parseInt(avatar.style.left.slice(0, -2));
-		pos -= 50;
-		if (pos < 0) {
-			avatar.style.left = `${window.innerWidth - parseInt(getComputedStyle(avatar).width.slice(0, -2))}px`;
-		} else {
-			avatar.style.left = `${pos}px`;
+		console.log(e);
+		if (e.key === 'ArrowDown') {
+			let pos = parsePos(avatar.style.top);
+			console.log(pos);
+			pos += 50;
+			if (pos + parseInt(getComputedStyle(avatar).height.slice(0, -2)) > window.innerHeight) {
+				avatar.style.top = '0px';
+			} else {
+				avatar.style.top = `${pos}px`;
+			}
+			console.log(pos);
+			//avatar.style.top = `${pos}px`;
+			console.log(avatar.style.top);
+			game = false;
 		}
-		console.log(avatar.style.left);
-		avatar.style.transform = 'scale(-1, 1)';
-	}
-	if (e.key === 'ArrowRight') {
-		let pos = parseInt(avatar.style.left.slice(0, -2));
-		pos += 50;
-		console.log(pos);
-		if (pos + parseInt(getComputedStyle(avatar).width.slice(0, -2)) > window.innerWidth) {
-			avatar.style.left = '0px';
-		} else {
-			avatar.style.left = `${pos}px`;
+		if (e.key === 'ArrowUp') {
+			let pos = parseInt(avatar.style.top.slice(0, -2));
+			pos -= 50;
+			if (pos < 0) {
+				avatar.style.top = `${window.innerHeight - parseInt(getComputedStyle(avatar).height.slice(0, -2))}px`;
+			} else {
+				avatar.style.top = `${pos}px`;
+			}
+			game = false;
+			console.log(avatar.style.top);
 		}
-		console.log(avatar.style.left);
-		avatar.style.transform = 'scale(1, 1)';
+		if (e.key === 'ArrowLeft') {
+			let pos = parseInt(avatar.style.left.slice(0, -2));
+			pos -= 50;
+			if (pos < 0) {
+				avatar.style.left = `${window.innerWidth - parseInt(getComputedStyle(avatar).width.slice(0, -2))}px`;
+			} else {
+				avatar.style.left = `${pos}px`;
+			}
+			console.log(avatar.style.left);
+			game = false;
+			avatar.style.transform = 'scale(-1, 1)';
+		}
+		if (e.key === 'ArrowRight') {
+			let pos = parseInt(avatar.style.left.slice(0, -2));
+			pos += 50;
+			console.log(pos);
+			if (pos + parseInt(getComputedStyle(avatar).width.slice(0, -2)) > window.innerWidth) {
+				avatar.style.left = '0px';
+			} else {
+				avatar.style.left = `${pos}px`;
+			}
+			console.log(avatar.style.left);
+			game = false;
+			avatar.style.transform = 'scale(1, 1)';
+		}
+		if (isTouching(coin, avatar)) {
+			uniqPos(coin, avatar);
+		}
+		//sleep(500);
+		//game = false;
+		window.setTimeout('inputDelay()', 200);
 	}
-	if (isTouching(coin, avatar)) {
-		uniqPos(coin, avatar);
-	}
-	//sleep(500);
-	//window.setTimeout('timeout()', 2020);
 });
 
 const parsePos = (pos) => {
@@ -122,6 +128,7 @@ const uniqPos = (coin, avatar) => {
 // }
 
 // window.setTimeout not working also
-function timeout() {
-	console.log('1');
+function inputDelay() {
+	game = true;
+	console.log('you can play');
 }
