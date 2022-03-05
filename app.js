@@ -15,7 +15,7 @@ const coin = document.querySelector('#coin');
 coin.style.left = '500px';
 
 window.addEventListener('keyup', (e) => {
-	// why its empty its 100 in css??
+	// why its empty its 100 in css???
 	if (!avatar.style.top) {
 		avatar.style.top = '100px';
 	}
