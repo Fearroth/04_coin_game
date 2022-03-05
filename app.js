@@ -13,10 +13,14 @@ function isTouching(a, b) {
 const avatar = document.querySelector('#player');
 const coin = document.querySelector('#coin');
 coin.style.left = '500px';
+
 window.addEventListener('keydown', (e) => {
+	// why its empty its 100 in css??
 	if (!avatar.style.top) {
-		avatar.style.top = 0;
-		avatar.style.left = 0;
+		console.log(avatar.style.top);
+
+		avatar.style.top = '100px';
+		avatar.style.left = '100px';
 	}
 	console.log(e);
 	if (e.key === 'ArrowDown') {
