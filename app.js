@@ -62,13 +62,31 @@ const parsePos = (pos) => {
 
 const randomPos = (coin, avatar) => {
 	while (isTouching(coin, avatar)) {
-		coin.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
-		coin.style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
-		console.log(Math.floor(Math.random() * window.innerWidth));
+		//console.log(getComputedStyle(coin).height.slice(0, -2), 'get copms');
+
+		let randomx = Math.floor(Math.random() * window.innerWidth);
+		let randomy = Math.floor(Math.random() * window.innerHeight);
+		console.log(getComputedStyle(coin).height.slice(0, -2), 'get copms');
+		//console.log(window.innerWidth, 'WIDTH x');
+		//console.log(window.innerHeight, 'HEIGHT y');
+		//console.log(randomx, 'randomx');
+		//console.log(randomy);
+		if (randomx > window.innerWidth - parseInt(getComputedStyle(coin).width.slice(0, -2)))
+			randomx -= parseInt(getComputedStyle(coin).width.slice(0, -2));
+		//console.log(randomx, 'randomx po if');
+		if (randomy > window.innerHeight - parseInt(getComputedStyle(coin).height.slice(0, -2)))
+			randomy -= parseInt(getComputedStyle(coin).height.slice(0, -2));
+		//console.log(randomy, 'randomy po if');
+
+		coin.style.left = `${randomx}px`;
+		coin.style.top = `${randomy}px`;
+
+		//console.log(Math.floor(Math.random() * window.innerWidth));
 	}
 
 	//coin.style.left = `${randomx}px`;
 	//coin.style.top = `${randomy}px`;
 
-	console.log(Math.floor(Math.random() * window.innerWidth));
+	//console.log(getComputedStyle(coin).width);
+	//console.log(Math.floor(Math.random() * window.innerWidth));
 };
