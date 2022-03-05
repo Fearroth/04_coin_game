@@ -51,11 +51,24 @@ window.addEventListener('keydown', (e) => {
 		console.log(avatar.style.left);
 		avatar.style.transform = 'scale(1, 1)';
 	}
-	if (isTouching(avatar, coin)) {
-		coin.style.left = '150px';
+	if (isTouching(coin, avatar)) {
+		randomPos(coin, avatar);
 	}
 });
 
 const parsePos = (pos) => {
 	return parseInt(pos.slice(0, -2));
+};
+
+const randomPos = (coin, avatar) => {
+	while (isTouching(coin, avatar)) {
+		coin.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
+		coin.style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
+		console.log(Math.floor(Math.random() * window.innerWidth));
+	}
+
+	//coin.style.left = `${randomx}px`;
+	//coin.style.top = `${randomy}px`;
+
+	console.log(Math.floor(Math.random() * window.innerWidth));
 };
