@@ -44,6 +44,6 @@ window.addEventListener('keydown', (e) => {
 		console.log(avatar.style.left);
 	}
 	if (isTouching(avatar, coin)) {
-		coin.style.left = '100px';
+		coin.style.left = '150px';
 	}
 });
