@@ -79,7 +79,7 @@ window.addEventListener('keyup', (e) => {
 		}
 		//sleep(500);
 		//game = false;
-		window.setTimeout('inputDelay()', 200);
+		window.setTimeout('inputDelay()', 80);
 	}
 });
 
