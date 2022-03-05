@@ -14,7 +14,7 @@ const avatar = document.querySelector('#player');
 const coin = document.querySelector('#coin');
 coin.style.left = '500px';
 
-window.addEventListener('keydown', (e) => {
+window.addEventListener('keyup', (e) => {
 	// why its empty its 100 in css??
 	if (!avatar.style.top) {
 		avatar.style.top = '100px';
@@ -54,7 +54,7 @@ window.addEventListener('keydown', (e) => {
 	if (isTouching(coin, avatar)) {
 		randomPos(coin, avatar);
 	}
-	sleep(500);
+	//sleep(500);
 });
 
 const parsePos = (pos) => {
@@ -92,10 +92,11 @@ const randomPos = (coin, avatar) => {
 	//console.log(Math.floor(Math.random() * window.innerWidth));
 };
 
-function sleep(milliseconds) {
-	const date = Date.now();
-	let currentDate = null;
-	do {
-		currentDate = Date.now();
-	} while (currentDate - date < milliseconds);
-}
+//sleep not workig after pressing button it procces all input
+// function sleep(milliseconds) {
+// 	const date = Date.now();
+// 	let currentDate = null;
+// 	do {
+// 		currentDate = Date.now();
+// 	} while (currentDate - date < milliseconds);
+// }
