@@ -17,15 +17,17 @@ coin.style.left = '500px';
 window.addEventListener('keydown', (e) => {
 	// why its empty its 100 in css??
 	if (!avatar.style.top) {
-		console.log(avatar.style.top);
-
 		avatar.style.top = '100px';
+	}
+	if (!avatar.style.left) {
 		avatar.style.left = '100px';
 	}
 	console.log(e);
 	if (e.key === 'ArrowDown') {
-		let pos = parseInt(avatar.style.top.slice(0, -2));
+		let pos = parsePos(avatar.style.top);
+		console.log(pos);
 		pos += 50;
+		console.log(pos);
 		avatar.style.top = `${pos}px`;
 		console.log(avatar.style.top);
 	}
@@ -40,14 +42,20 @@ window.addEventListener('keydown', (e) => {
 		pos -= 50;
 		avatar.style.left = `${pos}px`;
 		console.log(avatar.style.left);
+		avatar.style.transform = 'scale(-1, 1)';
 	}
 	if (e.key === 'ArrowRight') {
 		let pos = parseInt(avatar.style.left.slice(0, -2));
 		pos += 50;
 		avatar.style.left = `${pos}px`;
 		console.log(avatar.style.left);
+		avatar.style.transform = 'scale(1, 1)';
 	}
 	if (isTouching(avatar, coin)) {
 		coin.style.left = '150px';
 	}
 });
+
+const parsePos = (pos) => {
+	return parseInt(pos.slice(0, -2));
+};
