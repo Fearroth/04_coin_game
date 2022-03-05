@@ -74,6 +74,7 @@ window.addEventListener('keyup', (e) => {
 		uniqPos(coin, avatar);
 	}
 	//sleep(500);
+	//window.setTimeout('timeout()', 2020);
 });
 
 const parsePos = (pos) => {
@@ -119,3 +120,8 @@ const uniqPos = (coin, avatar) => {
 // 		currentDate = Date.now();
 // 	} while (currentDate - date < milliseconds);
 // }
+
+// window.setTimeout not working also
+function timeout() {
+	console.log('1');
+}
