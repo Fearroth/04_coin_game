@@ -54,6 +54,7 @@ window.addEventListener('keydown', (e) => {
 	if (isTouching(coin, avatar)) {
 		randomPos(coin, avatar);
 	}
+	sleep(500);
 });
 
 const parsePos = (pos) => {
@@ -90,3 +91,11 @@ const randomPos = (coin, avatar) => {
 	//console.log(getComputedStyle(coin).width);
 	//console.log(Math.floor(Math.random() * window.innerWidth));
 };
+
+function sleep(milliseconds) {
+	const date = Date.now();
+	let currentDate = null;
+	do {
+		currentDate = Date.now();
+	} while (currentDate - date < milliseconds);
+}
